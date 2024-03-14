@@ -14,7 +14,7 @@ const TodoApp = () => {
     try {
       const response = await fetch('http://localhost:3000/todo');
       const result = await response.json();
-     console.log(result);
+    //  console.log(result);
       setTodos(result);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -29,7 +29,14 @@ const TodoApp = () => {
 
 
   const handleAddTodo = async () => {
+    
     console.log(newTodo);
+    
+    if(newTodo.trim() === ''){
+      alert('Please enter a todo');
+      return;
+    }
+
     if (newTodo.trim() !== '') {
       try {
         const response = await fetch('http://localhost:3000/todo', {

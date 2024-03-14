@@ -8,17 +8,14 @@ const port = process.env.PORT || 3000;
 // Create an express app
 const app = express();
 
-// for environment variables
-dotenv.config();
-
+// middleware
+dotenv.config(); // for environment variables
 const corsOptions ={
-    origin:'http://localhost:3002', 
+    origin:'http://localhost:3001', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
-
-// for frotend cors policy
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); // for frotend cors policy
 
 // for parsing the body of the request
 app.use(express.json());
@@ -87,5 +84,5 @@ app.delete('/todo/:id', async (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log('Server is running on port 3000');
+  console.log('Server is running on port '+ port);
 });
