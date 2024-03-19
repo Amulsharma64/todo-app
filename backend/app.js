@@ -3,7 +3,7 @@ import { connectMongoDB } from './lib/db.js';
 import dotenv from 'dotenv';
 import { Todos } from './models/todo.js';
 import cors from 'cors';
-const Port = PORT || 3000;
+const Port = process.env.PORT || 3000;
 
 // Create an express app
 const app = express();
@@ -82,5 +82,5 @@ app.delete('/todo/:id', async (req, res) => {
 
 // Start the server
 app.listen(Port, () => {
-  console.log('Server is running on port '+ process.env.backend_PORT);
+  console.log('Server is running on port '+ process.env.PORT);
 });
