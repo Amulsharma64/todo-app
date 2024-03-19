@@ -3,7 +3,7 @@ import { connectMongoDB } from './lib/db.js';
 import dotenv from 'dotenv';
 import { Todos } from './models/todo.js';
 import cors from 'cors';
-const port = process.env.PORT || 3000;
+const Port = process.env.backend_PORT || 3000;
 
 // Create an express app
 const app = express();
@@ -16,9 +16,7 @@ const corsOptions ={
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions)); // for frotend cors policy
-
-// for parsing the body of the request
-app.use(express.json());
+app.use(express.json());// for parsing the body of the request
 
 // Define a route
 app.get('/', (req, res) => {
@@ -83,6 +81,6 @@ app.delete('/todo/:id', async (req, res) => {
  );
 
 // Start the server
-app.listen(port, () => {
-  console.log('Server is running on port '+ port);
+app.listen(Port, () => {
+  console.log('Server is running on port '+ process.env.backend_PORT);
 });

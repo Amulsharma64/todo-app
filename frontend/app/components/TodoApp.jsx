@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-
+const BASE_URL = "http://localhost:3000";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -8,13 +8,12 @@ const TodoApp = () => {
   const [editIndex, setEditIndex] = useState(-1);
   const [editValue, setEditValue] = useState('');
 
-
   // function for updating the todo
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:3000/todo');
+      const response = await fetch(`${BASE_URL}/todo`);
       const result = await response.json();
-    //  console.log(result);
+     console.log(result);
       setTodos(result);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -39,7 +38,7 @@ const TodoApp = () => {
 
     if (newTodo.trim() !== '') {
       try {
-        const response = await fetch('http://localhost:3000/todo', {
+        const response = await fetch(`${BASE_URL}/todo`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -62,7 +61,7 @@ const TodoApp = () => {
 
   const handleDeleteTodo = async (index) => {
     try {
-      await fetch(`http://localhost:3000/todo/${index}`, {
+      await fetch(`${BASE_URL}/todo/${index}`, {
         method: 'DELETE',
       });
      fetchData();
@@ -78,7 +77,7 @@ const TodoApp = () => {
 
   const handleSaveEdit = async (index) => {
     try {
-      await fetch(`http://localhost:3000/todo/${index}`, {
+      await fetch(`${BASE_URL}/todo/${index}`, {
         method: 'PUT', // or 'PATCH'
         headers: {
           'Content-Type': 'application/json',
