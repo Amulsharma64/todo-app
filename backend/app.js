@@ -11,7 +11,7 @@ const app = express();
 // middleware
 dotenv.config(); // for environment variables
 const corsOptions ={
-    origin:'http://localhost:3001', 
+    origin:'https://todo-2024.vercel.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
