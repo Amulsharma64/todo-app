@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://todo-app-00mi.onrender.com";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
