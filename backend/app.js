@@ -3,7 +3,7 @@ import { connectMongoDB } from './lib/db.js';
 import dotenv from 'dotenv';
 import { Todos } from './models/todo.js';
 import cors from 'cors';
-const Port = process.env.backend_PORT || 3000;
+const Port = PORT || 3000;
 
 // Create an express app
 const app = express();
@@ -11,7 +11,7 @@ const app = express();
 // middleware
 dotenv.config(); // for environment variables
 const corsOptions ={
-    origin:'http://localhost:3001', 
+    origin:'https://todo-2024.vercel.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
